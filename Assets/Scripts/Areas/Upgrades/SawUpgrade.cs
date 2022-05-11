@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SawUpgrade : MonoBehaviour
 {
+    public float DamageUpgradeScale;
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Truck")) return;
@@ -16,8 +17,8 @@ public class SawUpgrade : MonoBehaviour
         {
             money -= 1000;
             other.gameObject.GetComponent<TruckStats>().Money = money;
-            other.GetComponent<TruckStats>().Damage += 2;
-            Debug.Log("Saw upgrade, damage increased by 2");
+            other.GetComponent<TruckStats>().Damage += DamageUpgradeScale;
+            Debug.Log("Saw upgrade, damage increased by " + DamageUpgradeScale);
         }
     }
 }

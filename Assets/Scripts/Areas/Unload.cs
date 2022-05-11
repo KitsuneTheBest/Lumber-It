@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Unload : MonoBehaviour
 {
+    private SaveSystem _saveSystem;
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Truck")) return;
@@ -13,5 +14,7 @@ public class Unload : MonoBehaviour
         other.GetComponent<TruckStats>().Load = 0;
         Debug.Log("Truck unloaded");
         Debug.Log("Money received, total balance: " + other.GetComponent<TruckStats>().Money);
+        
+        other.GetComponent<SaveSystem>().SaveStats();
     }
 }

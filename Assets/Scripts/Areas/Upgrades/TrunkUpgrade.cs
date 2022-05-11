@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedUpgrade : MonoBehaviour
+public class TrunkUpgrade : MonoBehaviour
 {
+    public int TrunkUpgradeScale;
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Truck")) return;
@@ -16,8 +17,8 @@ public class SpeedUpgrade : MonoBehaviour
         {
             money -= 1000;
             other.gameObject.GetComponent<TruckStats>().Money = money;
-            other.GetComponent<TruckMovement>().Speed += 3;
-            Debug.Log("Speed upgrade, speed increased by 3");
+            other.GetComponent<TruckStats>().Capacity += TrunkUpgradeScale;
+            Debug.Log("Trunk upgrade, capacity increased by " + TrunkUpgradeScale);
         }
     }
 }
